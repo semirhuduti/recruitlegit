@@ -23,8 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author Semir
+ * The Entity class which is used to store and modify a recruit's competence.
+ * 
+ * @author Semir, Dan, Milos
  */
 @Entity
 @Table(catalog = "recruit", schema = "")
@@ -46,34 +47,73 @@ public class Competence implements Serializable {
     @OneToMany(mappedBy = "competenceId")
     private Collection<CompetenceProfile> competenceProfileCollection;
 
+    /**
+     * The constructor
+     */
     public Competence() {
     }
 
+    /**
+     * Constructor which takes a long as a parameter which is used as a PK when 
+     * it is stored in the database.
+     * 
+     * @param competenceId  Long which is used as a PK in the database
+     */
     public Competence(Long competenceId) {
         this.competenceId = competenceId;
     }
 
+    /**
+     * Get's the Long competenceId which is the Entity's PK
+     * 
+     * @return  The entity's PK
+     */
     public Long getCompetenceId() {
         return competenceId;
     }
 
+    /**
+     * Set's the Entity's PK
+     * 
+     * @param competenceId  The Entity's PK
+     */
     public void setCompetenceId(Long competenceId) {
         this.competenceId = competenceId;
     }
 
+    /**
+     * Get's the name of the competence profile
+     * 
+     * @return  Name of the competence profile
+     */
     public String getCompetenceName() {
         return competenceName;
     }
 
+    /**
+     * Sets the name of the Competence profile
+     * 
+     * @param competenceName    Name of the competence profile
+     */
     public void setCompetenceName(String competenceName) {
         this.competenceName = competenceName;
     }
 
+    /**
+     * Returns a Competence profile of the person
+     * 
+     * @return  A collection whith the different profiles of competence 
+     */
     @XmlTransient
     public Collection<CompetenceProfile> getCompetenceProfileCollection() {
         return competenceProfileCollection;
     }
 
+    /**
+     * Sets the competence profile for the Entity.
+     * 
+     * @param competenceProfileCollection   A collection of competence profiles
+     */
     public void setCompetenceProfileCollection(Collection<CompetenceProfile> competenceProfileCollection) {
         this.competenceProfileCollection = competenceProfileCollection;
     }

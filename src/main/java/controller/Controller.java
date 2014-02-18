@@ -35,7 +35,7 @@ public class Controller {
 
     /**
      * 
-     * @param personDTO 
+     * @param personDTO A DTO carrting all the data to create a Person Entity.
      */
     public void addPerson(PersonDTO personDTO) {
         Person person = new Person();
