@@ -5,6 +5,7 @@
  */
 package controller;
 
+import DTOs.PersonDTO;
 import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
@@ -14,8 +15,10 @@ import model.Person;
 import model.Role;
 
 /**
- *
- * @author Semir
+ * Controller class which handles all calls from the RegisterBean class o the 
+ * model.
+ * 
+ * @author Semir, Dan & Milos
  */
 @Stateless
 public class Controller {
@@ -25,19 +28,24 @@ public class Controller {
     @Inject
     RoleDAO roledao;
 
-    public Controller() {
+    /**
+     * The Controllers constructor
+     */
+    public Controller() {}
 
-    }
-
-    public void addPerson(String firstname, String surname, String username, String password, String email, String ssn) {
+    /**
+     * 
+     * @param personDTO 
+     */
+    public void addPerson(PersonDTO personDTO) {
         Person person = new Person();
-
-        person.setFirstname(firstname);
-        person.setSurname(surname);
-        person.setUsername(username);
-        person.setUserpassword(password);
-        person.setEmail(email);
-        person.setSsn(ssn);
+        
+        person.setName(personDTO.getName());
+        person.setSurname(personDTO.getSurname());
+        person.setUsername(personDTO.getUsername());
+        person.setPassword(personDTO.getPassword());
+        person.setEmail(personDTO.getEmail());
+        person.setSsn(personDTO.getSsn());
         person.setPersonId((long) 1);
         Role role = roledao.findByID(3);
         

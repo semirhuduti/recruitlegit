@@ -34,11 +34,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
     @NamedQuery(name = "Person.findByPersonId", query = "SELECT p FROM Person p WHERE p.personId = :personId"),
-    @NamedQuery(name = "Person.findByFirstname", query = "SELECT p FROM Person p WHERE p.firstname = :firstname"),
+    @NamedQuery(name = "Person.findByFirstname", query = "SELECT p FROM Person p WHERE p.name = :name"),
     @NamedQuery(name = "Person.findBySurname", query = "SELECT p FROM Person p WHERE p.surname = :surname"),
     @NamedQuery(name = "Person.findBySsn", query = "SELECT p FROM Person p WHERE p.ssn = :ssn"),
     @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email"),
-    @NamedQuery(name = "Person.findByUserpassword", query = "SELECT p FROM Person p WHERE p.userpassword = :userpassword"),
+    @NamedQuery(name = "Person.findByUserpassword", query = "SELECT p FROM Person p WHERE p.password = :password"),
     @NamedQuery(name = "Person.findByUsername", query = "SELECT p FROM Person p WHERE p.username = :username")})
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -49,7 +49,7 @@ public class Person implements Serializable {
     private Long personId;
     @Size(max = 255)
     @Column(length = 255)
-    private String firstname;
+    private String name;
     @Size(max = 255)
     @Column(length = 255)
     private String surname;
@@ -62,7 +62,7 @@ public class Person implements Serializable {
     private String email;
     @Size(max = 255)
     @Column(length = 255)
-    private String userpassword;
+    private String password;
     @Size(max = 255)
     @Column(length = 255)
     private String username;
@@ -74,8 +74,7 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "personId")
     private Collection<Availability> availabilityCollection;
 
-    public Person() {
-    }
+    public Person() {}
 
     public Person(Long personId) {
         this.personId = personId;
@@ -89,12 +88,12 @@ public class Person implements Serializable {
         this.personId = personId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
@@ -121,12 +120,12 @@ public class Person implements Serializable {
         this.email = email;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
