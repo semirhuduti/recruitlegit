@@ -24,8 +24,11 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Availability is a Persistence Entity used to stor data about when the recrit 
+ * is available to work.
+ * 
  *
- * @author Semir
+ * @author Semir, Dan & Milos
  */
 @Entity
 @Table(catalog = "recruit", schema = "")
@@ -52,41 +55,94 @@ public class Availability implements Serializable {
     @ManyToOne
     private Person personId;
 
+    /**
+     * Contructor whithout an argument
+     */
     public Availability() {
     }
 
+    /**
+     * Constructor whith the Long parameter availability specifying the PK for 
+     * the entity.
+     * 
+     * @param availabilityId 
+     */
     public Availability(Long availabilityId) {
         this.availabilityId = availabilityId;
     }
 
+    /**
+     * Get method to fetch availabilityId which is the PK for the Entity.
+     * 
+     * @return Long object availabilityId
+     */
     public Long getAvailabilityId() {
         return availabilityId;
     }
 
+    /**
+     * Sets the PK availability to the value of the parameter.
+     * 
+     * @param availabilityId A new Long PK for the Entity
+     */
     public void setAvailabilityId(Long availabilityId) {
         this.availabilityId = availabilityId;
     }
 
+    /**
+     * Get method to fetch the date from which the recruit can start working
+     * 
+     * @return  Date object fromDate
+     */
     public Date getFromDate() {
         return fromDate;
     }
 
+    /**
+     * Sets the date from which the recruit can start working to the value 
+     * of the parameter.
+     * 
+     * @param fromDate Date object specifying when the recruit can start working
+     */
     public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
+    /**
+     * Get method to fetch Date object toDate which is the final date which the 
+     * recruit is available.
+     * 
+     * @return Date object specifying when teh recruit is no longer available
+     */
     public Date getToDate() {
         return toDate;
     }
 
+    /**
+     * Sets the Date object toDate which is the final date which the 
+     * recruit is available.
+     * 
+     * @param toDate the Date object to which the recruit is available
+     */
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 
+    /**
+     * Get method to fetch Person object personId which this entity is dependent
+     * on.
+     * 
+     * @return Thhe foreign person 
+     */
     public Person getPersonId() {
         return personId;
     }
 
+    /**
+     * Sets the person which this Entity is bound and dependent on.
+     * 
+     * @param personId A Person object
+     */
     public void setPersonId(Person personId) {
         this.personId = personId;
     }

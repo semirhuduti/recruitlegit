@@ -5,6 +5,7 @@
  */
 package view;
 
+import DTOs.PersonDTO;
 import controller.Controller;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -22,15 +23,15 @@ public class RegisterBean implements Serializable {
     String SSN;
     String password;
     String username;
-    String firstName;
-    String surName;
+    String name;
+    String surname;
     
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getPassword() {
@@ -49,22 +50,13 @@ public class RegisterBean implements Serializable {
         this.username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    String lastName;
 
     public String getSSN() {
         return SSN;
@@ -84,8 +76,11 @@ public class RegisterBean implements Serializable {
     
     public String addPersonToDB(){
         System.out.println("Is the controller null ? : " + (controller == null) );
-        System.out.println(firstName + surName + username + password + email + SSN);
-        controller.addPerson(firstName, surName, username, password, email, SSN);
+        System.out.println(name + surname + SSN + email + username + password );
+        
+        PersonDTO person;
+        person = new PersonDTO(name, surname, SSN, email, username, password);
+        controller.addPerson(person);
         return "index";
     }
 
