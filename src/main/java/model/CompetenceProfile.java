@@ -49,41 +49,92 @@ public class CompetenceProfile implements Serializable {
     @ManyToOne
     private Competence competenceId;
 
+    /**
+     * Constructor
+     */
     public CompetenceProfile() {
     }
 
+    /**
+     * Constructor which takes a Long CompetenceProfileID which is the Entity's 
+     * PK when stored in the database
+     * 
+     * @param competenceProfileId   The PK of the Entity
+     */
     public CompetenceProfile(Long competenceProfileId) {
         this.competenceProfileId = competenceProfileId;
     }
 
+    /**
+     * Returns the competenceProfileId which is the Entity's PK
+     * 
+     * @return  Returns the Entity's PK
+     */
     public Long getCompetenceProfileId() {
         return competenceProfileId;
     }
 
+    /**
+     * Sets the entitys PK to the parameter 
+     * 
+     * @param competenceProfileId   The new PK for the entity
+     */
     public void setCompetenceProfileId(Long competenceProfileId) {
         this.competenceProfileId = competenceProfileId;
     }
 
+    /**
+     * Gets the persons years of experience as a BigDeciaml
+     * 
+     * @return  The user's years of experience
+     */
     public BigDecimal getYearsOfExperience() {
         return yearsOfExperience;
     }
 
+    /**
+     * Sets the user's years of experience
+     * 
+     * @param yearsOfExperience The user's years of experience
+     */
     public void setYearsOfExperience(BigDecimal yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
     }
 
+    /**
+     * Sets the foreign key refering to the person the competence profile is 
+     * connected to.
+     * 
+     * @return  Retuurns the Person the competence profile is connected to
+     */
     public Person getPersonId() {
         return personId;
     }
 
+    /**
+     * Sets the person the profile is connected to.
+     * 
+     * @param personId  The person the profile should be connected to
+     */
     public void setPersonId(Person personId) {
         this.personId = personId;
     }
 
+    /**
+     * Returns the foreign key to the competence this entity profile is 
+     * connected to.
+     * 
+     * @return  The competence this Entity is connected to 
+     */
     public Competence getCompetenceId() {
         return competenceId;
     }
 
+    /**
+     * Sets the foreign key to the competence this profile is connected to.
+     * 
+     * @param competenceId  The foreign key to the competence connected to this profile
+     */
     public void setCompetenceId(Competence competenceId) {
         this.competenceId = competenceId;
     }

@@ -74,12 +74,26 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "personId")
     private Collection<Availability> availabilityCollection;
 
+    /**
+     * The Constructor whithout any parameters
+     */
     public Person() {}
 
+    /**
+     * The constructor taking a long to use as the PK when stored in the 
+     * database
+     * 
+     * @param personId  Long to be used as PK
+     */
     public Person(Long personId) {
         this.personId = personId;
     }
 
+    /**
+     * Gets the personId which is the PK for the entity
+     * 
+     * @return  The entitys PK, personId
+     */
     public Long getPersonId() {
         return personId;
     }
@@ -88,58 +102,128 @@ public class Person implements Serializable {
         this.personId = personId;
     }
 
+     /**
+     * Gets the person's name
+     * 
+     * @return The person's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the person's Name
+     * 
+     * @param name The person's name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *  Gets the person's surname
+     * 
+     * @return The person's surname
+     */
     public String getSurname() {
         return surname;
     }
 
+    /**
+     *  Sets the person's surname
+     * 
+     * @param surname person's surname
+     */
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    /**
+     * Gets the person's social security number
+     * 
+     * @return The person's social security number
+     */
     public String getSsn() {
         return ssn;
     }
 
+     /**
+     *  Sets the person's social security number
+     * 
+     * @param ssn The peron's social security number
+     */
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
 
+    /**
+     * Gets the person's email
+     * 
+     * @return The person's email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *  Sets the person's email
+     * 
+     * @param email The person's email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets the person's password
+     * 
+     * @return The person's password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Sets the person's password
+     * 
+     * @param password The person's password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Gets the person's username
+     * 
+     * @return The person's username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the person's username
+     * 
+     * @param username The person's username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Returns the foreign key of roles.
+     * 
+     * @return  The role id
+     */
     public Role getRoleId() {
         return roleId;
     }
 
+    /**
+     * Sets the foreign key roleId.
+     * 
+     * @param roleId The new roleId.
+     */
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
     }
