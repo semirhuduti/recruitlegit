@@ -4,14 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<!--    <h:head>
-        <h:outputStylesheet name="common-style.css" library="css" />
-    </h:head>-->
+    <!--    <h:head>
+            <h:outputStylesheet name="common-style.css" library="css" />
+        </h:head>-->
+
+
 
     <h:body style="margin: auto " >
-
+        <f:view locale="#{languageManager.locale}"></f:view>
         <div id="page" align="center" style=" 
              background-image: url('template/common/background.jpg'); 
              background-repeat: repeat-x;
@@ -23,8 +26,10 @@
                     <ui:include src="/template/common/header.xhtml" />
                 </ui:insert>
             </div>
+            
+            <div id="whiteback" ></div>
 
-            <div id="content">
+            <div id="content" style="width: 635px; height: 800px; background-color: rgba(255, 255, 255, 0.4);">
                 <ui:insert name="content" >
                     <ui:include src="/template/common/content.xhtml" />
                 </ui:insert>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <f:loadBundle basename="i18n" var="msg"/>
+        <ui:composition template="template/common/layout.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+
+                    <br/><br/><br/>
+
+                    <fieldset style="width: 400px;">
+
+                        <legend>Personal Info</legend>
+
+                        <table cellpadding="3">
+                            <tr>
+                                <td id="email" width="150px"> <h:outputText value="#{msg['email.jsf']}" /></td>
+                                <td>
+                                    <h:inputText id="email" value="#{registerBean.email}" 
+                                                 size="20" required="true" label="Email Address">
+
+                                        <f:validator validatorId="util.validators.EmailValidator" />
+
+                                    </h:inputText>
+
+                                    <h:message for="email" style="color:red" />
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td width="150px"> <h:outputText value="#{msg['email.jsf']}" /></td>
+                                <td>
+                                    <h:inputText id="emailas" value="#{registerBean.email}" 
+                                                 size="20" required="true" label="Email Address">
+
+                                        <f:validator validatorId="util.validators.EmailValidator" />
+
+                                    </h:inputText>
+
+                                    
+
+                                </td>
+                                <td>
+                                    <h:message for="email" style="color:red" />
+                                </td>
+                            </tr>
+
+                        </table>
+                    </fieldset>
+
+                    <h:panelGrid columns="2">
+
+                        <h:panelGrid columns="2">
+
+
+
+                            <h:form>
+                                <h:selectOneMenu value="#{languageManager.language}" onchange="submit()">
+                                    <f:selectItem itemValue="en" itemLabel="English" />
+                                    <f:selectItem itemValue="se" itemLabel="Swedish" />
+
+                                </h:selectOneMenu>
+                            </h:form>
+
+                        </h:panelGrid>
+
+                    </h:panelGrid>
+
+                    <h:form>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['email.jsf']}" />
+
+                            <h:inputText id="email" value="#{registerBean.email}" 
+                                         size="20" required="true" label="Email Address">
+
+                                <f:validator validatorId="util.validators.EmailValidator" />
+
+                            </h:inputText>
+
+                            <h:message for="email" style="color:red" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['ssn.jsf']}" />
+
+                            <h:inputText id="SSN" value="#{registerBean.SSN}" 
+                                         size="20" required="true" label="SSN">
+
+                                <f:validator validatorId="util.validators.SSNValidator" />
+
+                            </h:inputText>
+
+                            <h:message for="SSN" style="color:red" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['username.jsf']}" />
+
+                            <h:inputText id="username" value="#{registerBean.username}" 
+                                         size="20" required="true" label="Username">
+
+
+                            </h:inputText>
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['password.jsf']}" />
+
+                            <h:inputSecret id="password" value="#{registerBean.password}" 
+                                           size="20" required="true" label="password">
+
+                                <f:validator validatorId="util.validators.PasswordValidator" />
+
+                            </h:inputSecret>
+
+                            <h:message for="password" style="color:red" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['firstname.jsf']}" />
+
+                            <h:inputText id="firstName" value="#{registerBean.firstName}" 
+                                         size="20" required="true" label="First Name">
+
+                                <f:validator validatorId="util.validators.NameValidator" />
+
+                            </h:inputText>
+
+                            <h:message for="firstName" style="color:red" />
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputText value="#{msg['surname.jsf']}" />
+
+                            <h:inputText id="surName" value="#{registerBean.surName}" 
+                                         size="20" required="true" label="Surname">
+
+                                <f:validator validatorId="util.validators.NameValidator" />
+
+                            </h:inputText>
+
+                            <h:message for="surName" style="color:red" />
+
+                        </h:panelGrid>
+
+
+                        <h:commandButton value="Submit" action="#{registerBean.addPersonToDB()}" />
+
+                    </h:form>
+
+
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                    <br/><br/><br/>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+
+</html>

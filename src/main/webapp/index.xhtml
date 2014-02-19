@@ -4,116 +4,147 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-
+        <f:loadBundle basename="i18n" var="msg"/>
         <ui:composition template="template/common/layout.xhtml">
 
             <ui:define name="content">
                 <h:form>
 
                     <br/><br/><br/>
-                    <br/><br/><br/>
-
-                    <h:form>
-
-                        <h:panelGrid columns="3">
-
-                            Enter your email :
-
-                            <h:inputText id="email" value="#{registerBean.email}" 
-                                         size="20" required="true" label="Email Address">
-
-                                <f:validator validatorId="util.validators.EmailValidator" />
-
-                            </h:inputText>
-
-                            <h:message for="email" style="color:red" />
-
-                        </h:panelGrid>
-
-                        <h:panelGrid columns="3">
-
-                            Enter your SSN:
-
-                            <h:inputText id="SSN" value="#{registerBean.SSN}" 
-                                         size="20" required="true" label="SSN">
-
-                                <f:validator validatorId="util.validators.SSNValidator" />
-
-                            </h:inputText>
-
-                            <h:message for="SSN" style="color:red" />
-
-                        </h:panelGrid>
-
-                        <h:panelGrid columns="3">
-
-                            Enter your username:
-
-                            <h:inputText id="username" value="#{registerBean.username}" 
-                                         size="20" required="true" label="Username">
 
 
-                            </h:inputText>
+                    <fieldset style="width: 500px;">
+                        
+                        <legend>Personal Info</legend>
+                        
+                        <p>Please provide the following personal information about you se we can store the data in out database for later use! </p>
 
-                        </h:panelGrid>
+                        <table cellpadding="3">
+                            <tr>
+                                <td id="emailf" width="150px"> 
+                                    <h:outputText value="#{msg['email.jsf']}" />
+                                </td>
+                                <td id="emaili">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="email" value="#{registerBean.email}" 
+                                                     size="20" required="true" label="Email Address">
 
-                        <h:panelGrid columns="3">
+                                            <f:validator validatorId="util.validators.EmailValidator" />
 
-                            Enter your password:
+                                        </h:inputText>
+                                        <tr>
+                                            <h:message for="email" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                            <h:inputSecret id="password" value="#{registerBean.password}" 
-                                         size="20" required="true" label="password">
+                            <tr>
+                                <td id="ssnf" width="150px"> <h:outputText value="#{msg['ssn.jsf']}" /></td>
+                                <td id="ssni">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="ssn" value="#{registerBean.SSN}" 
+                                                     size="20" required="true" label="SSN">
 
-                                <f:validator validatorId="util.validators.PasswordValidator" />
+                                            <f:validator validatorId="util.validators.SSNValidator" />
 
-                            </h:inputSecret>
+                                        </h:inputText>
+                                        <tr>
+                                            <h:message for="ssn" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                            <h:message for="password" style="color:red" />
-
-                        </h:panelGrid>
-
-                        <h:panelGrid columns="3">
-
-                            Enter your First Name:
-
-                            <h:inputText id="firstName" value="#{registerBean.firstName}" 
-                                         size="20" required="true" label="First Name">
-
-                                <f:validator validatorId="util.validators.NameValidator" />
-
-                            </h:inputText>
-
-                            <h:message for="firstName" style="color:red" />
-
-                        </h:panelGrid>
-
-                        <h:panelGrid columns="3">
-
-                            Enter your Surname:
-
-                            <h:inputText id="surName" value="#{registerBean.surName}" 
-                                         size="20" required="true" label="Surname">
-
-                                <f:validator validatorId="util.validators.NameValidator" />
-
-                            </h:inputText>
-
-                            <h:message for="surName" style="color:red" />
-
-                        </h:panelGrid>
-
-
-                        <h:commandButton value="Submit" action="#{registerBean.addPersonToDB()}" />
-
-                    </h:form>
+                            <tr>
+                                <td id="usernamef" width="150px"> <h:outputText value="#{msg['username.jsf']}" /></td>
+                                <td id="usernamei">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="username" value="#{registerBean.username}" 
+                                                     size="20" required="true" label="Username">
 
 
-                    <br/><br/><br/>
-                    <br/><br/><br/>
-                    <br/><br/><br/>
+                                        </h:inputText>
+                                        <tr></tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td id="passwordf" width="150px"> <h:outputText value="#{msg['password.jsf']}" /></td>
+                                <td id="passwordi">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="password" value="#{registerBean.password}" 
+                                                     size="20" required="true" label="password">
+
+                                            <f:validator validatorId="util.validators.PasswordValidator" />
+
+                                        </h:inputText>
+                                        <tr>
+                                            <h:message for="password" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td id="firstNamef" width="150px"> <h:outputText value="#{msg['firstname.jsf']}" /></td>
+                                <td id="firstNamei">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="firstName" value="#{registerBean.firstName}" 
+                                                     size="20" required="true" label="firstName">
+
+                                            <f:validator validatorId="util.validators.SSNValidator" />
+
+                                        </h:inputText>
+                                        <tr>
+                                        <h:message for="firstName" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td id="surNamef" width="150px"> <h:outputText value="#{msg['surname.jsf']}" /></td>
+                                <td id="surNamei">
+                                    <h:panelGrid columns="3">
+                                        <h:inputText id="surName" value="#{registerBean.surName}" 
+                                                     size="20" required="true" label="surName">
+
+                                            <f:validator validatorId="util.validators.NameValidator" />
+
+                                        </h:inputText>
+                                        <tr>
+                                        <h:message for="surName" style="color:red" />
+
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </fieldset>
+                    
+                    <fieldset style="width: 500px">
+                        <legend>Competence</legend>
+                    </fieldset>
+                    
+                    <fieldset style="width: 500px">
+                        <legend>Availability</legend>
+                    </fieldset>
+
+
+
+                    <h:panelGrid columns="2">
+
+                    </h:panelGrid>
+
+                    <h:commandButton value="Submit" action="#{registerBean.addPersonToDB()}" />
+
+
                     <br/><br/><br/>
                     <br/><br/><br/>
                     <br/><br/><br/>

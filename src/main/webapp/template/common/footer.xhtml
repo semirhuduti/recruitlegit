@@ -3,13 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+          
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <body>
 	    <ui:composition>
  
                 <div style="width: 635px; height: 45px; background-color: white; padding-bottom: 20px">
                     <br/>
-                    <p> Powerd by Semir Huduti, Milos Bogdanovic and Dan Karlsson </p>
+                     <h:outputText value="#{msg['powerdby.jsf']} Semir Huduti, Milos Bogdanovic #{msg['and.jsf']} Dan Karlsson" /> 
                 </div>
  
 	    </ui:composition>
