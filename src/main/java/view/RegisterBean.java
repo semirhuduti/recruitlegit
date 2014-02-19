@@ -23,15 +23,15 @@ public class RegisterBean implements Serializable {
     String SSN;
     String password;
     String username;
-    String name;
-    String surname;
+    String firstName;
+    String surName;
     
-    public String getSurname() {
-        return surname;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurName(String surname) {
+        this.surName = surname;
     }
 
     public String getPassword() {
@@ -50,12 +50,12 @@ public class RegisterBean implements Serializable {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
     public String getSSN() {
@@ -76,10 +76,10 @@ public class RegisterBean implements Serializable {
     
     public String addPersonToDB(){
         System.out.println("Is the controller null ? : " + (controller == null) );
-        System.out.println(name + surname + SSN + email + username + password );
+        System.out.println(firstName + surName + SSN + email + username + password );
         
         PersonDTO person;
-        person = new PersonDTO(name, surname, SSN, email, username, password);
+        person = new PersonDTO(firstName, surName, SSN, email, username, password);
         controller.addPerson(person);
         return "index";
     }
