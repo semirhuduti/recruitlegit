@@ -81,7 +81,7 @@ public class RegisterBean implements Serializable {
         PersonDTO person;
         person = new PersonDTO(firstName, surName, SSN, email, username, password);
         controller.addPerson(person);
-        return "index";
+        return "competence";
     }
 
 }
