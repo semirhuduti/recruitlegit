@@ -46,73 +46,34 @@ public class Role implements Serializable {
     @OneToMany(mappedBy = "roleId")
     private Collection<Person> personCollection;
 
-    /**
-     * The constructor
-     */
     public Role() {
     }
 
-    /**
-     * The contructor which also takes an Long roleID which wil serve as the PK
-     * for this Entity when stored in a database.
-     * 
-     * @param roleId    A Long used as a PK for the Entity
-     */
     public Role(Long roleId) {
         this.roleId = roleId;
     }
 
-    /**
-     * Returns the roleId which serves as this entitys PK.
-     * 
-     * @return  A Long used as this Entitys PK
-     */
     public Long getRoleId() {
         return roleId;
     }
 
-    /**
-     * Sets this Entitys PK to the value of the parameter.
-     * 
-     * @param roleId    This entitys new PK.
-     */
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
-    /**
-     * Returns the name of the role.
-     * 
-     * @return The name of the Role
-     */
     public String getRolename() {
         return rolename;
     }
 
-    /**
-     * Sets the name of the role.
-     * 
-     * @param rolename  The new name of the role
-     */
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
 
-    /**
-     * Returns the collection of people assigned to this role
-     * 
-     * @return  Collection of people assigned to this role
-     */
     @XmlTransient
     public Collection<Person> getPersonCollection() {
         return personCollection;
     }
 
-    /**
-     * Sets a collection of persons to be assigned to this role.
-     * 
-     * @param personCollection  A collecton of people to be assigned to this role
-     */
     public void setPersonCollection(Collection<Person> personCollection) {
         this.personCollection = personCollection;
     }

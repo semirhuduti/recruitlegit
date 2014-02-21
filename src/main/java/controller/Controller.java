@@ -6,9 +6,12 @@
 package controller;
 
 import DTOs.PersonDTO;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import model.Competence;
+import model.DAO.CompetenceDAO;
 import model.DAO.PersonDAO;
 import model.DAO.RoleDAO;
 import model.Person;
@@ -27,6 +30,8 @@ public class Controller {
     PersonDAO persondao;
     @Inject
     RoleDAO roledao;
+    @Inject
+    CompetenceDAO competencedao;
 
     /**
      * The Controllers constructor
@@ -40,10 +45,10 @@ public class Controller {
     public void addPerson(PersonDTO personDTO) {
         Person person = new Person();
         
-        person.setName(personDTO.getName());
+        person.setFirstname(personDTO.getName());
         person.setSurname(personDTO.getSurname());
         person.setUsername(personDTO.getUsername());
-        person.setPassword(personDTO.getPassword());
+        person.setUserpassword(personDTO.getPassword());
         person.setEmail(personDTO.getEmail());
         person.setSsn(personDTO.getSsn());
         person.setPersonId((long) 1);
@@ -53,6 +58,15 @@ public class Controller {
         System.out.println("Person to be added to the pu : " + person.toString());
 
         persondao.addPerson(person);
+    }
+
+    public void addCompetenceToDB(List<String> values) {
+        
+        for(int i = 0; i < values.size(); i++ ){
+            Competence c = new Competence();
+            c.setCompetenceName(values.get(i));
+            competencedao.addCompetence(c);
+        }        
     }
 
 }

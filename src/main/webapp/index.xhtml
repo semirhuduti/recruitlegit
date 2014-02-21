@@ -6,9 +6,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        <f:loadBundle basename="i18n" var="msg"/>
-        <ui:composition template="template/common/layout.xhtml">
 
+        <ui:composition template="template/common/layout.xhtml">
+            
             <ui:define name="content">
                 <h:form>
 
@@ -16,9 +16,9 @@
 
 
                     <fieldset style="width: 500px;">
-                        
+
                         <legend>Personal Info</legend>
-                        
+
                         <p>Please provide the following personal information about you se we can store the data in out database for later use! </p>
 
                         <table cellpadding="3">
@@ -96,11 +96,11 @@
                                         <h:inputText id="firstName" value="#{registerBean.firstName}" 
                                                      size="20" required="true" label="firstName">
 
-                                            <f:validator validatorId="util.validators.SSNValidator" />
+                                            <f:validator validatorId="util.validators.NameValidator" />
 
                                         </h:inputText>
                                         <tr>
-                                        <h:message for="firstName" style="color:red" />
+                                            <h:message for="firstName" style="color:red" />
                                         </tr>
                                     </h:panelGrid>
                                 </td>
@@ -117,7 +117,7 @@
 
                                         </h:inputText>
                                         <tr>
-                                        <h:message for="surName" style="color:red" />
+                                            <h:message for="surName" style="color:red" />
 
                                         </tr>
                                     </h:panelGrid>
@@ -127,11 +127,7 @@
 
                         </table>
                     </fieldset>
-                    
-                    <fieldset style="width: 500px">
-                        <legend>Competence</legend>
-                    </fieldset>
-                    
+
                     <fieldset style="width: 500px">
                         <legend>Availability</legend>
                     </fieldset>

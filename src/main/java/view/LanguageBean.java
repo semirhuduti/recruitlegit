@@ -6,21 +6,17 @@
 package view;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
 import java.util.Locale;
-import java.util.Map;
-import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Semir
  */
 @Named("languageManager")
-@SessionScoped
+@ViewScoped
 public class LanguageBean implements Serializable {
 
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
