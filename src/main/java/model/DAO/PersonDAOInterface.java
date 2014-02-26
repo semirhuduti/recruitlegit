@@ -19,5 +19,6 @@ public interface PersonDAOInterface {
     public void removePerson(Person person);
     public Person findByID(long id);
     public List<Person> findAll();
+    public Person findByUsername(String username);
     
 }

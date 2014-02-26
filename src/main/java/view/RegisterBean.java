@@ -10,11 +10,14 @@ import controller.Controller;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 import javax.inject.Named;
 
 @Named("registerBean")
 @RequestScoped
-public class RegisterBean implements Serializable {
+public class RegisterBean implements Serializable, ActionListener {
 
     @EJB
     private Controller controller;
@@ -80,8 +83,13 @@ public class RegisterBean implements Serializable {
         
         PersonDTO person;
         person = new PersonDTO(firstName, surName, SSN, email, username, password);
-        controller.addPerson(person);
+        controller.setPerson(person);
         return "competence";
+    }
+
+    @Override
+    public void processAction(ActionEvent event) throws AbortProcessingException {
+       addPersonToDB();
     }
 
 }

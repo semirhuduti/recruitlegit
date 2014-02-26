@@ -45,4 +45,11 @@ public class CompetenceDAO implements CompetenceDAOInterface {
         return query.getResultList();
     }
 
+    @Override
+    public Competence findByName(String name) {
+        TypedQuery<Competence> query = em.createQuery(
+                "SELECT c FROM Competence g WHERE competence.name = " + name, Competence.class);
+        return query.getSingleResult();
+    }
+
 }

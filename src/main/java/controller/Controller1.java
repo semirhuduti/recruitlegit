@@ -6,17 +6,13 @@
 package controller;
 
 import DTOs.PersonDTO;
-import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import model.Availability;
 import model.Competence;
-import model.CompetenceProfile;
-import model.DAO.AvailabilityDAO;
 import model.DAO.CompetenceDAO;
-import model.DAO.CompetenceProfileDAO;
 import model.DAO.PersonDAO;
 import model.DAO.RoleDAO;
 import model.Person;
@@ -30,7 +26,7 @@ import view.CompetenceBean.CompetenceHolder;
  * @author Semir, Dan & Milos
  */
 @Stateless
-public class Controller {
+public class Controller1 {
    
     @Inject
     PersonDAO persondao;
@@ -38,49 +34,21 @@ public class Controller {
     RoleDAO roledao;
     @Inject
     CompetenceDAO competencedao;
-    @Inject
-    AvailabilityDAO availabilitydto;
-    @Inject
-    CompetenceProfileDAO cpdao;
     
-    PersonDTO personDTO;
+    Person person;
     Availability availibility;
     List<CompetenceHolder> competenceHolder;
-
-    public PersonDTO getPerson() {
-        return personDTO;
-    }
-
-    public void setPerson(PersonDTO person) {
-        this.personDTO = person;
-    }
-
-    public Availability getAvailibility() {
-        return availibility;
-    }
-
-    public void setAvailibility(Availability availibility) {
-        this.availibility = availibility;
-    }
-
-    public List<CompetenceHolder> getCompetenceHolder() {
-        return competenceHolder;
-    }
-
-    public void setCompetenceHolder(List<CompetenceHolder> competenceHolder) {
-        this.competenceHolder = competenceHolder;
-    }
 
     /**
      * The Controllers constructor
      */
-    public Controller() {}
+    public Controller1() {}
 
-    
-    public void persistAll(){
-        
-        //Persist Person
-        
+    /**
+     * 
+     * @param personDTO A DTO carrting all the data to create a Person Entity.
+     */
+    public void addPerson(PersonDTO personDTO) {
         Person person = new Person();
         
         person.setFirstname(personDTO.getName());
@@ -96,34 +64,28 @@ public class Controller {
         System.out.println("Person to be added to the pu : " + person.toString());
 
         persondao.addPerson(person);
+    }
+
+    public void addCompetenceToDB(List<String> values) {
         
+        for(int i = 0; i < values.size(); i++ ){
+            Competence c = new Competence();
+            c.setCompetenceName(values.get(i));
+            competencedao.addCompetence(c);
+        }        
+    }
+    
+    public void persistAll(Person person, Availability availibility, List <CompetenceHolder> ch){
+        
+        //Persist Person
         
         //Get Person ID
         
-        
-        
         //Persist Availibility
-        availibility.setPersonId(person);
-        availabilitydto.addAvailability(availibility);
-        
         
         //Persist Competene
         
-        for(int i = 0; i < competenceHolder.size(); i++ ){
-            Competence c = new Competence();
-            c.setCompetenceName(competenceHolder.get(i).getCompetenceName());
-            competencedao.addCompetence(c);
-        }
-
         //Get Competence ID 
-        
-        for(int i = 0; i < competenceHolder.size(); i++ ){
-            CompetenceProfile cp = new CompetenceProfile();
-            cp.setCompetenceId(competencedao.findByName(competenceHolder.get(i).getCompetenceName()));
-            cp.setYearsOfExperience(competenceHolder.get(i).getYoe());
-            cp.setPersonId(person);
-            cpdao.addCompetenceProfile(cp);
-        }
         
         //Persist Competence Profile
         

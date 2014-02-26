@@ -52,4 +52,9 @@ public class PersonDAO implements PersonDAOInterface {
         return em.find(Person.class, id);
 
     }
+
+    @Override
+    public Person findByUsername(String username) {
+        return em.createQuery("SELECT p FROM person WHERE person.username = " + username, Person.class).getSingleResult();
+    }
 }

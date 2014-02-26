@@ -7,43 +7,80 @@ package view;
 
 import controller.Controller;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
-
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
+import javax.inject.Inject;
 import javax.inject.Named;
 import model.Competence;
+import model.DAO.AvailabilityDAO;
+import model.DAO.CompetenceDAO;
 
 /**
  *
  * @author Semir
  */
 @Named("cbean")
-@ViewScoped
-public class CompetenceBean implements Serializable {
+@SessionScoped
+public class CompetenceBean implements Serializable, ActionListener {
 
     @EJB
     private Controller controller;
+    @Inject
+    CompetenceDAO competencedao;
     
-    private List<String> addressList = new ArrayList<String>(); // getter+setter
-
-    public List<String> getAddressList() {
-        return addressList;
+    private List<CompetenceHolder> competenceList = new ArrayList<>(); // getter+setter
+     
+    public List<CompetenceHolder> getCompetenceList() {
+        return competenceList;
     }
 
-    public void setAddressList(List<String> addressList) {
-        this.addressList = addressList;
+    public void setCompetenceList(List<CompetenceHolder> addressList) {
+        this.competenceList = addressList;
     }
 
-    public void addAddress() {
-        addressList.add("");
+    public void addCompetence() {
+        competenceList.add(new CompetenceHolder());
+    }
+    
+    public void addCompetenceToDB(){
+        controller.setCompetenceHolder(competenceList);
     }
 
-    public void persistAddresses() {
-        System.out.println("From competence bean to db:" + addressList.toString());
+    @Override
+    public void processAction(ActionEvent event) throws AbortProcessingException {
+        addCompetenceToDB();
+    }
+    
+    public void persistAll(){
+        controller.persistAll();
+    }
+        
+    public class CompetenceHolder{
+        String competenceName;
+        BigDecimal yoe;
+
+        public String getCompetenceName() {
+            return competenceName;
+        }
+
+        public void setCompetenceName(String competenceName) {
+            this.competenceName = competenceName;
+        }
+
+        public BigDecimal getYoe() {
+            return yoe;
+        }
+
+        public void setYoe(BigDecimal yoe) {
+            this.yoe = yoe;
+        }
+        
     }
 
 }

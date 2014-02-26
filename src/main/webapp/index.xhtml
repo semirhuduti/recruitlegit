@@ -4,18 +4,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:body>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
+    <h:body>
+        <h:head>
+
+        </h:head>
         <ui:composition template="template/common/layout.xhtml">
-            
+
             <ui:define name="content">
+                
+                
                 <h:form>
 
-                    <br/><br/><br/>
 
-
-                    <fieldset style="width: 500px;">
+                    <p:fieldset style="width: 500px;">
 
                         <legend>Personal Info</legend>
 
@@ -126,11 +131,24 @@
 
 
                         </table>
-                    </fieldset>
+                    </p:fieldset>
 
-                    <fieldset style="width: 500px">
-                        <legend>Availability</legend>
-                    </fieldset>
+                    <p:fieldset legend="Competence" style="width: 500px">
+
+                        <p>Please provide all your competence areas!</p>
+
+                        <h:form id="addressForm">
+                            <h:commandButton value="Add Address" action="#{cbean.addAddress()}" immediate="true">
+                                <f:ajax render="addressForm" />
+                            </h:commandButton>
+                            <c:forEach items="#{cbean.addressList}" var="address">
+                                <h:inputText value="#{address}" /><br />
+                            </c:forEach>
+                            <h:commandButton value="Save" action="#{cbean.persistAddresses}" />
+                        </h:form>
+                    </p:fieldset>
+
+
 
 
 
