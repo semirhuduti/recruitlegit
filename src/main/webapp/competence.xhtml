@@ -18,220 +18,224 @@
             <ui:define name="content">
 
                 <br/><br/>
+                <h:form>
 
-                <p:fieldset legend="Personal Info" style="width: 500px; background-color: rgba(255, 255, 255, 0.4); ">
-
-
-                    <p>Please provide the following personal information about you se we can store the data in out database for later use! </p>
-
-                    <table cellpadding="3">
-                        <tr>
-                            <td id="emailf" width="150px"> 
-                                <h:outputText value="#{msg['email.jsf']}" />
-                            </td>
-                            <td id="emaili">
-                                <h:panelGrid columns="3">
-                                    <h:form id="emailform">
-                                        <h:inputText id="email" value="#{registerBean.email}" 
-                                                     size="20" required="true" label="Email Address">
-
-                                            <f:validator validatorId="util.validators.EmailValidator" />
-
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr>
-                                        <h:message for="email" style="color:red" />
-                                    </tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td id="ssnf" width="150px"> <h:outputText value="#{msg['ssn.jsf']}" /></td>
-                            <td id="ssni">
-                                <h:panelGrid columns="3">
-                                    <h:form id="ssnform">
-                                        <h:inputText id="ssn" value="#{registerBean.SSN}" 
-                                                     size="20" required="true" label="SSN">
-
-                                            <f:validator validatorId="util.validators.SSNValidator" />
-
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr>
-                                        <h:message for="ssn" style="color:red" />
-                                    </tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td id="usernamef" width="150px"> <h:outputText value="#{msg['username.jsf']}" /></td>
-                            <td id="usernamei">
-                                <h:panelGrid columns="3">
-                                    <h:form id="usernameform">
-                                        <h:inputText id="username" value="#{registerBean.username}" 
-                                                     size="20" required="true" label="Username">
+                    <p:fieldset legend="#{msg['personinfo.jsf']}" style="width: 500px; background-color: rgba(255, 255, 255, 0.4); ">
 
 
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr></tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
+                        <p>#{msg['personinfotext.jsf']}</p>
 
-                        <tr>
-                            <td id="passwordf" width="150px"> <h:outputText value="#{msg['password.jsf']}" /></td>
-                            <td id="passwordi">
-                                <h:panelGrid columns="3">
-                                    <h:form id="passwordform">
-                                        <h:inputText id="password" value="#{registerBean.password}" 
-                                                     size="20" required="true" label="password">
+                        <table cellpadding="3">
+                            <tr>
+                                <td id="emailf" width="150px"> 
+                                    <h:outputText value="#{msg['email.jsf']}" />
+                                </td>
+                                <td id="emaili">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="emailform">
+                                            <h:inputText id="email" value="#{registerBean.email}" 
+                                                         size="20" required="true" label="Email Address">
 
-                                            <f:validator validatorId="util.validators.PasswordValidator" />
+                                                <f:validator validatorId="util.validators.EmailValidator" />
 
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr>
-                                        <h:message for="password" style="color:red" />
-                                    </tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr>
+                                            <h:message for="email" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td id="firstNamef" width="150px"> <h:outputText value="#{msg['firstname.jsf']}" /></td>
-                            <td id="firstNamei">
-                                <h:panelGrid columns="3">
-                                    <h:form id="firstnameform">
-                                        <h:inputText id="firstName" value="#{registerBean.firstName}" 
-                                                     size="20" required="true" label="firstName">
+                            <tr>
+                                <td id="ssnf" width="150px"> <h:outputText value="#{msg['ssn.jsf']}" /></td>
+                                <td id="ssni">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="ssnform">
+                                            <h:inputText id="ssn" value="#{registerBean.SSN}" 
+                                                         size="20" required="true" label="SSN">
 
-                                            <f:validator validatorId="util.validators.NameValidator" />
+                                                <f:validator validatorId="util.validators.SSNValidator" />
 
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr>
-                                        <h:message for="firstName" style="color:red" />
-                                    </tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr>
+                                            <h:message for="ssn" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td id="surNamef" width="150px"> <h:outputText value="#{msg['surname.jsf']}" /></td>
-                            <td id="surNamei">
-                                <h:panelGrid columns="3">
-                                    <h:form id="surnameform">
-                                        <h:inputText id="surName" value="#{registerBean.surName}" 
-                                                     size="20" required="true" label="surName">
-
-                                            <f:validator validatorId="util.validators.NameValidator" />
-
-                                        </h:inputText>
-                                    </h:form>
-                                    <tr>
-                                        <h:message for="surName" style="color:red" />
-
-                                    </tr>
-                                </h:panelGrid>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td id="usernamef" width="150px"> <h:outputText value="#{msg['username.jsf']}" /></td>
+                                <td id="usernamei">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="usernameform">
+                                            <h:inputText id="username" value="#{registerBean.username}" 
+                                                         size="20" required="true" label="Username">
 
 
-                    </table>
-                </p:fieldset>
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr></tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                <br/><br/>
+                            <tr>
+                                <td id="passwordf" width="150px"> <h:outputText value="#{msg['password.jsf']}" /></td>
+                                <td id="passwordi">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="passwordform">
+                                            <h:inputText id="password" value="#{registerBean.password}" 
+                                                         size="20" required="true" label="password">
 
-                <p:fieldset legend="Competence" style="width: 500px ;background-color: rgba(255, 255, 255, 0.4); ">
+                                                <f:validator validatorId="util.validators.PasswordValidator" />
 
-                    <p>Please provide all your competence areas!</p>
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr>
+                                            <h:message for="password" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                    <h:form id="addressForm">
+                            <tr>
+                                <td id="firstNamef" width="150px"> <h:outputText value="#{msg['firstname.jsf']}" /></td>
+                                <td id="firstNamei">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="firstnameform">
+                                            <h:inputText id="firstName" value="#{registerBean.firstName}" 
+                                                         size="20" required="true" label="firstName">
 
-                        <c:forEach items="#{cbean.competenceList}" var="competence">
-                            <p>Competence</p>
-                            <h:inputText value="#{competence.competenceName}" /><br />
-                            <p>Years Of Experience</p>
-                            <h:inputText value="#{competence.yoe}" /><br />
-                        </c:forEach>
-                        <br/>
-                        <h:commandButton value="Add Address" action="#{cbean.addCompetence()}" immediate="true">
-                            <f:ajax render="addressForm" />
-                        </h:commandButton>
+                                                <f:validator validatorId="util.validators.NameValidator" />
 
-                    </h:form>
-                </p:fieldset>
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr>
+                                            <h:message for="firstName" style="color:red" />
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
-                <br/><br/>
+                            <tr>
+                                <td id="surNamef" width="150px"> <h:outputText value="#{msg['surname.jsf']}" /></td>
+                                <td id="surNamei">
+                                    <h:panelGrid columns="3">
+                                        <h:form id="surnameform">
+                                            <h:inputText id="surName" value="#{registerBean.surName}" 
+                                                         size="20" required="true" label="surName">
 
-                <p:fieldset legend="Availability" style="width: 500px; background-color: rgba(255, 255, 255, 0.4); " >
-                    <h:form id="from">  
+                                                <f:validator validatorId="util.validators.NameValidator" />
 
-                        <h3>From:</h3>  
-                        <p:calendar value="#{calendarBean.datefrom}" id="popupCal" />  
+                                            </h:inputText>
+                                        </h:form>
+                                        <tr>
+                                            <h:message for="surName" style="color:red" />
 
-                        <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" />  
-
-                        <p:dialog header="Selected Dates" widgetVar="dialog"   
-                                  showEffect="fade" hideEffect="fade">  
-
-                            <h:panelGrid id="display" columns="2" cellpadding="5">  
-
-
-                                <h:outputText value="Popup Date:" />  
-                                <h:outputText value="#{calendarBean.datefrom}" id="popupDate">  
-                                    <f:convertDateTime pattern="d/M/yyyy"/>  
-                                </h:outputText>  
-
-
-                            </h:panelGrid>  
-
-                        </p:dialog>  
-
-                    </h:form>
-
-                    <h:form id="to">  
-
-                        <h3>To:</h3>  
-                        <p:calendar value="#{calendarBean.dateto}" id="popupCal" />  
-
-                        <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" />  
-
-                        <p:dialog header="Selected Dates" widgetVar="dialog"   
-                                  showEffect="fade" hideEffect="fade">  
-
-                            <h:panelGrid id="display" columns="2" cellpadding="5">  
-
-
-                                <h:outputText value="Popup Date:" />  
-                                <h:outputText value="#{calendarBean.dateto}" id="popupDate">  
-                                    <f:convertDateTime pattern="d/M/yyyy"/>  
-                                </h:outputText>  
+                                        </tr>
+                                    </h:panelGrid>
+                                </td>
+                            </tr>
 
 
-                            </h:panelGrid>  
+                        </table>
+                    </p:fieldset>
 
-                        </p:dialog>  
+                    <br/><br/>
 
-                    </h:form>
+                    <p:fieldset legend="#{msg['competence.jsf']}" style="width: 500px ;background-color: rgba(255, 255, 255, 0.4); ">
+
+                        <p>#{msg['competencetext.jsf']}</p>
+
+                        <h:form id="competenceForm">
+
+                            <c:forEach items="#{cbean.competenceList}" var="competence">
+                                <p>Competence</p>
+                                <h:inputText value="#{competence.competenceName}" /><br />
+                                <p>Years Of Experience</p>
+                                <h:inputText value="#{competence.yoe}" /><br />
+                            </c:forEach>
+                            <br/>
+                            <h:commandButton value="Add Competence" action="#{cbean.addCompetence()}" immediate="true">
+                                <f:ajax render="competenceForm" />
+                            </h:commandButton>
+
+                        </h:form>
+                    </p:fieldset>
+
+                    <br/><br/>
+
+                    <p:fieldset legend="#{msg['availability.jsf']}" style="width: 500px; background-color: rgba(255, 255, 255, 0.4); " >
+                        
+                        <p>#{msg['availabilitytext.jsf']}</p>
+                        
+                        <h:form id="from">  
+
+                            <h3>#{msg['from.jsf']}:</h3>  
+                            <p:calendar value="#{calendarBean.datefrom}" id="popupCal" />  
+
+<!--                            <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" />  -->
+
+                            <p:dialog header="Selected Dates" widgetVar="dialog"   
+                                      showEffect="fade" hideEffect="fade">  
+
+                                <h:panelGrid id="display" columns="2" cellpadding="5">  
+
+
+                                    <h:outputText value="Popup Date:" />  
+                                    <h:outputText value="#{calendarBean.datefrom}" id="popupDate">  
+                                        <f:convertDateTime pattern="d/M/yyyy"/>  
+                                    </h:outputText>  
+
+
+                                </h:panelGrid>  
+
+                            </p:dialog>  
+
+                        </h:form>
+
+                        <h:form id="to">  
+
+                            <h3>#{msg['to.jsf']}:</h3>  
+                            <p:calendar value="#{calendarBean.dateto}" id="popupCal" />  
+
+<!--                            <p:commandButton value="Submit" update="display" oncomplete="PF('dialog').show()" />  -->
+
+                            <p:dialog header="Selected Dates" widgetVar="dialog"   
+                                      showEffect="fade" hideEffect="fade">  
+
+                                <h:panelGrid id="display" columns="2" cellpadding="5">  
+
+
+                                    <h:outputText value="Popup Date:" />  
+                                    <h:outputText value="#{calendarBean.dateto}" id="popupDate">  
+                                        <f:convertDateTime pattern="d/M/yyyy"/>  
+                                    </h:outputText>  
+
+
+                                </h:panelGrid>  
+
+                            </p:dialog>  
+
+                        </h:form>
 
 
 
-                    <br/><br/><br/>
+                        <br/><br/><br/>
 
-                </p:fieldset>
+                    </p:fieldset>
 
-                <br/><br/>
-                <p:commandButton process="@this" action="#{cbean.persistAll}">
-                    <f:actionListener type="#{cbean}" />
-                    <f:actionListener type="#{registerBean}" />
-                    <f:actionListener type="#{calendarBean}" />
-                </p:commandButton>
+                    <br/><br/>
+                    <p:commandButton process="@this" action="#{cbean.persistAll}" value="#{msg['submit.jsf']}">
+    <!--                    <f:actionListener type="#{cbean}" />
+                        <f:actionListener type="#{registerBean}" />
+                        <f:actionListener type="#{calendarBean}" />-->
+                    </p:commandButton>
 
-
+                </h:form>
             </ui:define>
 
         </ui:composition>
