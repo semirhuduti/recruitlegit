@@ -17,7 +17,7 @@ import javax.inject.Named;
 
 @Named("registerBean")
 @RequestScoped
-public class RegisterBean implements Serializable, ActionListener {
+public class RegisterBean implements Serializable {
 
     @EJB
     private Controller controller;
@@ -85,11 +85,6 @@ public class RegisterBean implements Serializable, ActionListener {
         person = new PersonDTO(firstName, surName, SSN, email, username, password);
         controller.setPerson(person);
         return "competence";
-    }
-
-    @Override
-    public void processAction(ActionEvent event) throws AbortProcessingException {
-       addPersonToDB();
     }
 
 }

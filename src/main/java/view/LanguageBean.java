@@ -37,5 +37,13 @@ public class LanguageBean implements Serializable {
         locale = new Locale(language);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
+    
+    public boolean isSwedish(){
+        return (getLocale().getLanguage().equals("se"));
+    }
+    
+     public boolean isEnglish(){
+        return (getLocale().getLanguage().equals("en"));
+    }
 
 }

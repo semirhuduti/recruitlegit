@@ -27,7 +27,7 @@ import model.DAO.CompetenceDAO;
  */
 @Named("cbean")
 @SessionScoped
-public class CompetenceBean implements Serializable, ActionListener {
+public class CompetenceBean implements Serializable {
 
     @EJB
     private Controller controller;
@@ -48,18 +48,11 @@ public class CompetenceBean implements Serializable, ActionListener {
         competenceList.add(new CompetenceHolder());
     }
     
-    public void addCompetenceToDB(){
-        controller.setCompetenceHolder(competenceList);
-    }
-
-    @Override
-    public void processAction(ActionEvent event) throws AbortProcessingException {
-        addCompetenceToDB();
-    }
+//    public void addCompetenceToDB(){
+//        controller.setCompetenceHolder(competenceList);
+//    }
     
-    public void persistAll(){
-        controller.persistAll();
-    }
+
         
     public class CompetenceHolder{
         String competenceName;

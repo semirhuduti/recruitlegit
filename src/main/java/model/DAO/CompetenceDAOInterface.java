@@ -19,6 +19,5 @@ public interface CompetenceDAOInterface {
     public void removeCompetence(Competence competence);
     public Competence findByID(long id);
     public List<Competence> findAll();
-    public Competence findByName(String name);
 
 }

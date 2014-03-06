@@ -9,10 +9,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import model.Availability;
 import model.DAO.AvailabilityDAO;
-import org.primefaces.event.*;
+
 
 @Named("calendarBean")
-public class CalendarBean implements ActionListener {  
+public class CalendarBean {  
     @EJB
     Controller controller;
     @Inject
@@ -44,11 +44,5 @@ public class CalendarBean implements ActionListener {
         a.setPersonId(null);
         controller.setAvailibility(a);
     }
-
-    @Override
-    public void processAction(ActionEvent event) throws AbortProcessingException {
-        addAvailabilityToDB();
-    }
-
-       
+    
 }

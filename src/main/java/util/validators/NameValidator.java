@@ -34,12 +34,20 @@ public class NameValidator implements Validator{
  
 		matcher = pattern.matcher(value.toString());
 		if(!matcher.matches()){
- 
-			FacesMessage msg = 
+                    
+                    if(FacesContext.getCurrentInstance().getViewRoot().getLocale().getLanguage().equals("en")){
+                        FacesMessage msg = 
 				new FacesMessage("Name validation failed.", 
 						"Invalid name format.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
+                    }else{
+                        FacesMessage msg = 
+				new FacesMessage("Namn validation misslyckades.", 
+						"Ogiltigt namn format.");
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			throw new ValidatorException(msg);
+                    }
  
 		}
  
